@@ -1,0 +1,24 @@
+﻿<Window
+    x:Class="ExpenseTracker.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="clr-namespace:ExpenseTracker.Views"
+    xmlns:viewModel="clr-namespace:ExpenseTracker.ViewModels"
+    Title="ExpenseTracker"
+    Width="1280"
+    Height="720"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <ContentControl Content="{Binding CurrentViewModel}">
+        <ContentControl.Resources>
+            <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
+                <view:LoginView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:RegisterViewModel}">
+                <view:RegisterView />
+            </DataTemplate>
+        </ContentControl.Resources>
+    </ContentControl>
+</Window>
