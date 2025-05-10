@@ -24,5 +24,11 @@ namespace ExpenseTracker.ViewModels
         {
             MessageBox.Show("Ahoj");
         }
+
+        [RelayCommand]
+        private void NavigateHome()
+        {
+            _navigationService.CurrentViewModel = new HomeViewModel(_navigationService);
+        }
     }
 }

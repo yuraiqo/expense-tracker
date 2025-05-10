@@ -18,6 +18,10 @@ namespace ExpenseTracker.ViewModels
             _navigationService.CurrentViewModel = new LoginViewModel(_navigationService);
         }
 
-
+        [RelayCommand]
+        private void NavigateHome()
+        {
+            _navigationService.CurrentViewModel = new HomeViewModel(_navigationService);
+        }
     }
 }

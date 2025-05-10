@@ -69,6 +69,7 @@
             <Button
                 Height="35"
                 Background="#007ACC"
+                Command="{Binding NavigateHomeCommand}"
                 Content="Register"
                 FontWeight="Bold"
                 Foreground="White" />

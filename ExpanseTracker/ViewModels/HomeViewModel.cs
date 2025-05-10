@@ -2,7 +2,7 @@
 
 namespace ExpenseTracker.ViewModels
 {
-    public class HomeViewModel
+    public class HomeViewModel : ViewModelBase
     {
         private readonly NavigationService _navigationService;
 

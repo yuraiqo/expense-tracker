@@ -45,7 +45,7 @@
             <Button
                 Height="35"
                 Background="#007ACC"
-                Command="{Binding LoginCommand}"
+                Command="{Binding NavigateHomeCommand}"
                 Content="Login"
                 FontWeight="Bold"
                 Foreground="White" />
