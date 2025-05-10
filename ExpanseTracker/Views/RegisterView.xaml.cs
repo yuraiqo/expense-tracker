@@ -10,7 +10,6 @@ namespace ExpenseTracker.Views
         public RegisterView()
         {
             InitializeComponent();
-            DataContext = new RegisterViewModel();
         }
         
         private void SwitchToLogin(object sender, RequestNavigateEventArgs e)

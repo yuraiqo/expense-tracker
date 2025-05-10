@@ -1,6 +1,4 @@
-﻿using ExpenseTracker.ViewModels;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace ExpenseTracker.Views
 {
@@ -9,7 +7,6 @@ namespace ExpenseTracker.Views
         public LoginView()
         {
             InitializeComponent();
-            DataContext = new LoginViewModel();
         }
     }
 }

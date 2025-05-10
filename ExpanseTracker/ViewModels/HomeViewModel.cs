@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ExpenseTracker.Services;
 
 namespace ExpenseTracker.ViewModels
 {
     public class HomeViewModel
     {
+        private readonly NavigationService _navigationService;
+
+        public HomeViewModel(NavigationService ns)
+        {
+            _navigationService = ns;
+        }
     }
 }

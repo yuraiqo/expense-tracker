@@ -1,12 +1,23 @@
-﻿namespace ExpenseTracker.ViewModels
+﻿using ExpenseTracker.Services;
+
+namespace ExpenseTracker.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public ViewModelBase CurrentViewModel { get; }
+        private readonly NavigationService _navigationService;
 
-        public MainViewModel()
+        public ViewModelBase? CurrentViewModel => _navigationService.CurrentViewModel;
+
+        public MainViewModel(NavigationService navigationService)
         {
-            CurrentViewModel = new LoginViewModel();
+            _navigationService = navigationService;
+
+            _navigationService.CurrentViewModelChanged += OnCurrentViewModelChanged;
+        }
+
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }

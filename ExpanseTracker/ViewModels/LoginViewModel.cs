@@ -1,14 +1,25 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using ExpenseTracker.Views;
+using ExpenseTracker.Services;
 using System.Windows;
-using System.Windows.Navigation;
 
 namespace ExpenseTracker.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public partial class LoginViewModel : ViewModelBase
     {
-        public RelayCommand LoginCommand => new RelayCommand(Login);
+        private readonly NavigationService _navigationService;
 
+        public LoginViewModel(NavigationService ns)
+        {
+            _navigationService = ns;
+        }
+
+        [RelayCommand]
+        private void NavigateRegister()
+        {
+            _navigationService.CurrentViewModel = new RegisterViewModel(_navigationService);
+        }
+
+        [RelayCommand]
         private void Login()
         {
             MessageBox.Show("Ahoj");

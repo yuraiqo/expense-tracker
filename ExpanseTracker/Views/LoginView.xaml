@@ -4,8 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:view="clr-namespace:ExpenseTracker.Views"
     xmlns:viewModel="clr-namespace:ExpenseTracker.ViewModels"
-    Width="1280"
-    Height="720"
     Background="#FF1E1E1E">
     <Grid>
         <StackPanel
@@ -54,7 +52,7 @@
 
             <TextBlock Margin="0,20,0,0" HorizontalAlignment="Center">
                 <Run Foreground="White" Text="Not registered? " />
-                <Hyperlink Foreground="#00ADEF">
+                <Hyperlink Command="{Binding NavigateRegisterCommand}" Foreground="#00ADEF">
                     <Run Text="Create your account" />
                 </Hyperlink>
             </TextBlock>
