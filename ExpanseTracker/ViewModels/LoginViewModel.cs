@@ -1,10 +1,9 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Windows;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ExpenseTracker.Data;
 using ExpenseTracker.Services;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace ExpenseTracker.ViewModels
 {
@@ -52,7 +51,7 @@ namespace ExpenseTracker.ViewModels
                 return;
             }
 
-            _navigationService.CurrentViewModel = new HomeViewModel(_navigationService, _dbContext);
+            _navigationService.CurrentViewModel = new HomeViewModel(_navigationService, _dbContext, user);
         }
     }
 }

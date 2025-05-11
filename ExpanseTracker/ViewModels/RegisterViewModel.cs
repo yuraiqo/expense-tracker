@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Windows;
-using System.Windows.Media.Converters;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ExpenseTracker.Data;
@@ -79,7 +78,7 @@ namespace ExpenseTracker.ViewModels
             _dbContext.Users.Add(newUser);
             await _dbContext.SaveChangesAsync();
 
-            _navigationService.CurrentViewModel = new HomeViewModel(_navigationService, _dbContext);
+            _navigationService.CurrentViewModel = new HomeViewModel(_navigationService, _dbContext, newUser);
         }
     }
 }
