@@ -1,4 +1,5 @@
-﻿using ExpenseTracker.Services;
+﻿using ExpenseTracker.Data;
+using ExpenseTracker.Services;
 
 namespace ExpenseTracker.ViewModels
 {
@@ -6,9 +7,12 @@ namespace ExpenseTracker.ViewModels
     {
         private readonly NavigationService _navigationService;
 
-        public HomeViewModel(NavigationService ns)
+        private readonly AppDbContext _dbContext;
+
+        public HomeViewModel(NavigationService ns, AppDbContext db)
         {
             _navigationService = ns;
+            _dbContext = db;
         }
     }
 }

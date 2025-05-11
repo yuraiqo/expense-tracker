@@ -2,7 +2,7 @@
 
 namespace ExpenseTracker.Models
 {
-    public class Category
+    public class Transaction
     {
         [Key]
         public int Id { get; set; }
@@ -11,17 +11,15 @@ namespace ExpenseTracker.Models
         public int UserId { get; set; }  // foreign key to User
 
         [Required]
-        [MaxLength(20)]
-        public string Name { get; set; }
+        public int CategoryId { get; set; }  // foreign key to Category
 
         [Required]
-        public string Type { get; set; }
+        public decimal Amount { get; set; }
 
-        [Required]
-        public string Color { get; set; }
+        public DateTime Date { get; set; }
 
         public User User { get; set; }
 
-        public ICollection<Transaction> Transactions { get; set; }
+        public Category Category { get; set; }
     }
 }

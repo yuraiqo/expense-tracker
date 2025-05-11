@@ -2,7 +2,7 @@
 
 namespace ExpenseTracker.Models
 {
-    class User
+    public class User
     {
         [Key]
         public int Id { get; set; }
@@ -18,13 +18,10 @@ namespace ExpenseTracker.Models
         [Required]
         public required string PasswordHash { get; set; }
 
-        public DateTime createdAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public User(string username, string passwordHash, string email)
-        {
-            Username = username;
-            Email = email;
-            PasswordHash = passwordHash;
-        }
+        public ICollection<Transaction> Transactions { get; set; }
+
+        public ICollection<Category> Categories { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using ExpenseTracker.Data;
 using ExpenseTracker.Services;
 using System.Windows;
 
@@ -8,15 +9,18 @@ namespace ExpenseTracker.ViewModels
     {
         private readonly NavigationService _navigationService;
 
-        public LoginViewModel(NavigationService ns)
+        private readonly AppDbContext _dbContext;
+
+        public LoginViewModel(NavigationService ns, AppDbContext db)
         {
             _navigationService = ns;
+            _dbContext = db;
         }
 
         [RelayCommand]
         private void NavigateRegister()
         {
-            _navigationService.CurrentViewModel = new RegisterViewModel(_navigationService);
+            _navigationService.CurrentViewModel = new RegisterViewModel(_navigationService, _dbContext);
         }
 
         [RelayCommand]
@@ -28,7 +32,7 @@ namespace ExpenseTracker.ViewModels
         [RelayCommand]
         private void NavigateHome()
         {
-            _navigationService.CurrentViewModel = new HomeViewModel(_navigationService);
+            _navigationService.CurrentViewModel = new HomeViewModel(_navigationService, _dbContext);
         }
     }
 }
