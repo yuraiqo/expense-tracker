@@ -1,6 +1,9 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using ExpenseTracker.Data;
 using ExpenseTracker.Services;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace ExpenseTracker.ViewModels
@@ -23,15 +26,32 @@ namespace ExpenseTracker.ViewModels
             _navigationService.CurrentViewModel = new RegisterViewModel(_navigationService, _dbContext);
         }
 
-        [RelayCommand]
-        private void Login()
-        {
-            MessageBox.Show("Ahoj");
-        }
+        [ObservableProperty] private string? username;
+        [ObservableProperty] private string? password;
 
         [RelayCommand]
-        private void NavigateHome()
+        private async Task LoginAsync()
         {
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
+            {
+                MessageBox.Show("Both fields are required.");
+                return;
+            }
+
+            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Username == Username);
+            if (user == null)
+            {
+                MessageBox.Show("Invalid username or password.");
+                return;
+            }
+
+            bool passwordMatch = BCrypt.Net.BCrypt.Verify(Password, user.PasswordHash);
+            if (!passwordMatch)
+            {
+                MessageBox.Show("Invalid username or password.");
+                return;
+            }
+
             _navigationService.CurrentViewModel = new HomeViewModel(_navigationService, _dbContext);
         }
     }

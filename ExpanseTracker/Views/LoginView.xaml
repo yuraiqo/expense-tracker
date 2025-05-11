@@ -28,7 +28,8 @@
                 Margin="0,0,0,10"
                 Background="#333"
                 BorderBrush="#555"
-                Foreground="White" />
+                Foreground="White"
+                Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
 
             <TextBlock
                 FontSize="14"
@@ -45,7 +46,7 @@
             <Button
                 Height="35"
                 Background="#007ACC"
-                Command="{Binding NavigateHomeCommand}"
+                Click="LoginButton_Click"
                 Content="Login"
                 FontWeight="Bold"
                 Foreground="White" />

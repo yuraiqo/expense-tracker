@@ -12,9 +12,14 @@ namespace ExpenseTracker.Views
             InitializeComponent();
         }
         
-        private void SwitchToLogin(object sender, RequestNavigateEventArgs e)
+        private async void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (DataContext is RegisterViewModel vm)
+            {
+                vm.Password = PasswordBox.Password;
+                vm.ConfirmPassword = ConfirmPasswordBox.Password;
+                await vm.RegisterCommand.ExecuteAsync(null);
+            }
         }
     }
 }
