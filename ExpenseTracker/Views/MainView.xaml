@@ -9,6 +9,8 @@
     Title="ExpenseTracker"
     Width="1280"
     Height="720"
+    MinWidth="950"
+    MinHeight="550"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <ContentControl Content="{Binding CurrentViewModel}">

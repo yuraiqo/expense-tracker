@@ -67,14 +67,16 @@
                 FontSize="14"
                 Foreground="White"
                 Text="Amount" />
-            <TextBox
+            <xctk:DecimalUpDown
                 Height="30"
                 Margin="0,0,0,10"
                 Background="#333"
                 BorderBrush="#555"
                 Foreground="White"
-                IsEnabled="True"
-                Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" />
+                FormatString="F2"
+                Minimum="0"
+                TextAlignment="Left"
+                Value="{Binding Amount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
 
             <!--  Buttons  -->
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
