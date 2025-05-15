@@ -47,7 +47,15 @@ namespace ExpenseTracker.ViewModels
                 Amount = Amount
             };
 
-            _dbContext.Transactions.Add(transaction);
+            if (SelectedCategory.Type == "Income")
+            {
+                _user.Balance += Amount;
+            } else
+            {
+                _user.Balance -= Amount;
+            }
+
+                _dbContext.Transactions.Add(transaction);
             await _dbContext.SaveChangesAsync();
 
             OnTransactionSaved?.Invoke();

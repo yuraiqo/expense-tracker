@@ -18,6 +18,8 @@ namespace ExpenseTracker.Models
         [Required]
         public required string PasswordHash { get; set; }
 
+        public decimal Balance { get; set; } = 0;
+
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public ICollection<Transaction> Transactions { get; set; }

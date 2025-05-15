@@ -21,7 +21,7 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Height" Value="35" />
-            <Setter Property="Padding" Value="10,0" />
+            <Setter Property="Padding" Value="20,0" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Cursor" Value="Hand" />
@@ -172,6 +172,25 @@
                             <TextBlock
                                 FontSize="14"
                                 Foreground="#FFAAAAAA"
+                                Text="Balance:" />
+                            <TextBlock
+                                x:Name="BalanceTextBlock"
+                                FontSize="20"
+                                FontWeight="SemiBold"
+                                Foreground="#FF64B5F6"
+                                Text="{Binding Balance, StringFormat={}{0:C}, FallbackValue='$0.00'}" />
+                        </StackPanel>
+                    </Border>
+
+                    <Border
+                        Margin="0,0,0,10"
+                        Padding="15"
+                        Background="#FF333333"
+                        CornerRadius="3">
+                        <StackPanel>
+                            <TextBlock
+                                FontSize="14"
+                                Foreground="#FFAAAAAA"
                                 Text="Amount Spent (This Month):" />
                             <TextBlock
                                 x:Name="AmountSpentTextBlock"
@@ -229,6 +248,16 @@
                     Command="{Binding OpenAddCategoryCommand}"
                     Content="Add Category"
                     Style="{StaticResource PrimaryButton}" />
+                <Button
+                    Width="50"
+                    Command="{Binding OpenFilterCommand}"
+                    Content="Filter"
+                    Style="{StaticResource SecondaryButton}" />
+                <Button
+                    Width="50"
+                    Command="{Binding OpenGraphCommand}"
+                    Content="Graph"
+                    Style="{StaticResource SecondaryButton}" />
                 <Button
                     Margin="10,5,5,5"
                     HorizontalAlignment="Right"

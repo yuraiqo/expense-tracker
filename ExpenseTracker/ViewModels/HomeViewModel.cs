@@ -58,10 +58,17 @@ namespace ExpenseTracker.ViewModels
             });
 
             CalculateAmountSpentAndIncome(items);
+
+            var userFromDb = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == _user.Id);
+            if (userFromDb != null)
+            {
+                Balance = userFromDb.Balance;
+            }
         }
 
         [ObservableProperty] private decimal spentThisMonth;
         [ObservableProperty] private decimal incomeThisMonth;
+        [ObservableProperty] private decimal balance;
 
         private void CalculateAmountSpentAndIncome(List<Transaction> transactions)
         {
