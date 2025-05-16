@@ -1,0 +1,15 @@
+﻿<Window
+    x:Class="ExpenseTracker.Views.GraphView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+    Title="Expense Breakdown"
+    Width="600"
+    Height="400"
+    Background="#FF1E1E1E"
+    WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <lvc:PieChart LegendLocation="Right" Series="{Binding SeriesCollection}" />
+    </Grid>
+</Window>

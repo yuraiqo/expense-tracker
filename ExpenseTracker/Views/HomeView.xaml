@@ -191,13 +191,13 @@
                             <TextBlock
                                 FontSize="14"
                                 Foreground="#FFAAAAAA"
-                                Text="Amount Spent (This Month):" />
+                                Text="Amount Spent (On Loaded):" />
                             <TextBlock
                                 x:Name="AmountSpentTextBlock"
                                 FontSize="20"
                                 FontWeight="SemiBold"
                                 Foreground="#FFE57373"
-                                Text="{Binding SpentThisMonth, StringFormat={}{0:C}, FallbackValue='$0.00'}" />
+                                Text="{Binding SpentOnLoaded, StringFormat={}{0:C}, FallbackValue='$0.00'}" />
                         </StackPanel>
                     </Border>
 
@@ -209,13 +209,13 @@
                             <TextBlock
                                 FontSize="14"
                                 Foreground="#FFAAAAAA"
-                                Text="Income (This Month):" />
+                                Text="Income (On Loaded):" />
                             <TextBlock
                                 x:Name="IncomeTextBlock"
                                 FontSize="20"
                                 FontWeight="SemiBold"
                                 Foreground="#FF81C784"
-                                Text="{Binding IncomeThisMonth, StringFormat={}{0:C}, FallbackValue='$0.00'}" />
+                                Text="{Binding IncomeOnLoaded, StringFormat={}{0:C}, FallbackValue='$0.00'}" />
                         </StackPanel>
                     </Border>
                 </StackPanel>
@@ -235,36 +235,61 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="0,10,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-            <StackPanel
-                Grid.Row="0"
-                Margin="0,10,0,20"
-                Orientation="Horizontal">
-                <Button
-                    Command="{Binding OpenAddTransactionCommand}"
-                    Content="Add Transaction"
-                    Style="{StaticResource PrimaryButton}" />
-                <Button
-                    Command="{Binding OpenAddCategoryCommand}"
-                    Content="Add Category"
-                    Style="{StaticResource PrimaryButton}" />
-                <Button
-                    Width="50"
-                    Command="{Binding OpenFilterCommand}"
-                    Content="Filter"
-                    Style="{StaticResource SecondaryButton}" />
-                <Button
-                    Width="50"
-                    Command="{Binding OpenGraphCommand}"
-                    Content="Graph"
-                    Style="{StaticResource SecondaryButton}" />
-                <Button
-                    Margin="10,5,5,5"
+                <!--  Left-side Buttons  -->
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button
+                        Command="{Binding OpenAddTransactionCommand}"
+                        Content="Add Transaction"
+                        Style="{StaticResource PrimaryButton}" />
+                    <Button
+                        Command="{Binding OpenAddCategoryCommand}"
+                        Content="Add Category"
+                        Style="{StaticResource PrimaryButton}" />
+                    <Button
+                        Width="50"
+                        Command="{Binding OpenGraphCommand}"
+                        Content="Graph"
+                        Style="{StaticResource SecondaryButton}" />
+                    <Button
+                        Margin="10,5,5,5"
+                        HorizontalAlignment="Right"
+                        Command="{Binding ExportDataCommand}"
+                        Content="Export Data"
+                        Style="{StaticResource SecondaryButton}" />
+                </StackPanel>
+
+                <!--  Right-side Filters  -->
+                <StackPanel
+                    Grid.Column="1"
                     HorizontalAlignment="Right"
-                    Command="{Binding ExportDataCommand}"
-                    Content="Export Data"
-                    Style="{StaticResource SecondaryButton}" />
-            </StackPanel>
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="0,0,10,0"
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="Filter by:" />
+                    <ComboBox
+                        Width="150"
+                        Height="35"
+                        Margin="0,0,10,0"
+                        ItemsSource="{Binding CategoryFilterOptions}"
+                        SelectedItem="{Binding SelectedCategoryFilter, Mode=TwoWay}" />
+                    <ComboBox
+                        Width="150"
+                        Height="35"
+                        Margin="0,0,0,0"
+                        ItemsSource="{Binding TimeFilterOptions}"
+                        SelectedItem="{Binding SelectedTimeFilter, Mode=TwoWay}" />
+                </StackPanel>
+            </Grid>
+
 
             <DataGrid
                 x:Name="TransactionsDataGrid"
